@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://www.hui12.com/lib/vue.js"></script>
+    <script src="http://www.hui12.com/lib/vue-router.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <a v-link="{ path: '/foo' }">Go to /foo</a>
+            <a v-link="{ path: '/foo/bar' }">Go to /foo/bar</a>
+            <a v-link="{ path: '/foo/baz' }">Go to /foo/baz</a>
+        </p>
+        <router-view></router-view>
+    </div>
+</body>
+<script>
+    var Foo = Vue.extend({
+        template:
+                '<div class="foo">' +
+                    '<h2>This is Foo!</h2>' +
+                    '<router-view></router-view>'+
+                '</div>'
+    })
+    var Bar = Vue.extend({
+        template: '<p>This is bar!</p>'
+    })
+    var Baz = Vue.extend({
+        template: '<p>This is baz!</p>'
+    })
+    var router = new VueRouter();
+
+    router.map({
+        '/foo': {
+            component: Foo,
+            subRoutes: {
+                '/': {
+                    component: {
+                        template: '<p>Default sub view for Foo</p>'
+                    }
+                },
+                '/bar': {
+                    component: Bar
+                },
+                '/baz': {
+                    component: Baz
+                }
+            }
+        }
+    })
+
+//    var App = Vue.extend({});
+    var App = {};
+    router.start(App,'#app');
+</script>
+</html>

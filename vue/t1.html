@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://www.hui12.com/lib/vue.js"></script>
+</head>
+<body id="app">
+<div class="input-group">
+    <input class="form-control input-sm" type="text" v-bind:placeholder="placeholder" v-model="message" v-on:keyup.stop.prevent.13="triggerSearch" style="width:300px;">
+    <button class="btn btn-default btn-info btn-sm" type="button" v-on:click.stop.prevent="triggerSearch">查找</button>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            placeholder: '占位占位',
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            triggerSearch: function(e){
+                alert(1);
+                if(!this.message.trim()){
+
+                }
+            }
+        }
+    })
+</script>
+</html>

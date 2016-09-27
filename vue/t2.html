@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>t2.text</title>
+	<script src="http://www.hui12.com/lib/vue.js"></script>
+</head>
+<body id="vm">
+	<ul>
+		<li v-for="(key,val) in list" v-show="toggle">{{ val.name }} {{$index}} {{$key}}</li>
+	</ul>
+</body>
+<script>
+	var list = [
+		{
+			name: 'a1',
+			toggle: true
+		},
+		{
+			name: 'a2',
+			toggle: true
+		},
+		{
+			name: 'a3',
+			toggle: false
+		}
+	];
+	var list2 = {
+		k1: {
+			name: 'a1',
+			toggle: true
+		},
+		k2: {
+			name: 'a2',
+			toggle: true
+		},
+		k3: {
+			name: 'a3',
+			toggle: false
+		}
+	}
+	var vm = new Vue({
+		el: '#vm',
+		data: {
+			list: list2,
+			toggle: false
+		}
+	})
+</script>
+</html>

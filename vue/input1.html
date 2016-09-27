@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://www.hui12.com/lib/vue.js"></script>
+</head>
+<body id="app">
+    <div>{{aaa}}</div>
+    <input type="text" v-model="aaa" debounce="500"/>
+</body>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            aaa: 'demo'
+        }
+    });
+</script>
+</html>

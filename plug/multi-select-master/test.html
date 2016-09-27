@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/multi-select.css">
+    <script src="test/src/jquery.js"></script>
+    <script src="js/jquery.multi-select.js"></script>
+</head>
+<body>
+<select multiple="multiple" id="my-select" name="my-select[]">
+    <option value='elem_1'>elem 1</option>
+    <option value='elem_2'>elem 2</option>
+    <option value='elem_3'>elem 3</option>
+    <option value='elem_4'>elem 4</option>
+</select>
+</body>
+<script>
+    $('#my-select').multiSelect({});
+//    $('#my-select').multiSelect('select', 'elem_1');
+//    $('#my-select').multiSelect('select_all');
+//    $('#my-select').multiSelect('deselect_all');
+    $('#your-select').multiSelect('addOption', { value: 'test', text: 'test', index: 0, nested: 'optgroup_label' });
+</script>
+</html>

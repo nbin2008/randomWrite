@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://www.hui12.com/lib/vue.js"></script>
+</head>
+<body id="app">
+    <input type="text" v-model="parentName"/>
+    <my-component :msg="parentName" v-ref:vm_my_component></my-component>
+
+    <template id="temp">
+        <div>
+            <input type="text" v-model="msg"/>
+            <span>{{ name }}</span>
+        </div>
+    </template>
+</body>
+<script>
+    var myComponent = Vue.extend({
+        template: '#temp',
+        data: function(){
+            return {
+                name: 'nihao'
+            };
+        }
+    });
+    Vue.component('my-component', myComponent);
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            parentName: 'parentName'
+        },
+        ready: function(){
+            var vmMyComponent = this.$refs.vm_my_component;
+            console.log(this.$refs);
+        }
+    })
+</script>
+</html>

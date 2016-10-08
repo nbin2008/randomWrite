@@ -5,6 +5,12 @@
     <title></title>
 </head>
 <body>
+<script>
+    var it = makeIterator(['a', 'b']);
 
+    console.log( it.next() ); // { value: "a", done: false }
+    console.log( it.next() );  // { value: "b", done: false }
+    console.log( it.next() ); // { value: undefined, done: true }
+</script>
 </body>
 </html>

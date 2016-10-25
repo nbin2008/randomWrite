@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://www.hui12.com/lib/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+	<table id="table">
+		<tr>
+			<td>123</td>
+			<td>123</td>
+			<td>123</td>
+			<td>123</td>
+		</tr>
+		<tr>
+			<td>123</td>
+			<td>123</td>
+			<td>123</td>
+			<td>123</td>
+		</tr>
+		<tr>
+			<td>123</td>
+			<td>123</td>
+			<td>123</td>
+			<td>123</td>
+		</tr>
+	</table>
+</body>
+<script>
+	var str = "";
+	$('#table tr').each(function(i,v){
+		str += "<tr>";
+		$(v).children().each(function(i2,v2){
+			var colspan = ($(this).prop('colspan') > 0) ? $(this).prop('colspan') : 1;
+			var rowspan = ($(this).prop('rowspan') > 0) ? $(this).prop('rowspan') : 1;
+			str += "<td colspan="+ colspan +" rowspan="+ rowspan +">";
+			str += $(v2).text();
+			str += "</td>";
+		})
+		str += "</tr>";
+	})
+	console.log( str );
+</script>
+</html>

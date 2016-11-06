@@ -46,76 +46,51 @@
 
 	'use strict';
 	
-	var _store = __webpack_require__(1);
+	var _Vue = __webpack_require__(1);
+	
+	var _Vue2 = _interopRequireDefault(_Vue);
+	
+	var _Vuex = __webpack_require__(3);
+	
+	var _Vuex2 = _interopRequireDefault(_Vuex);
+	
+	var _store = __webpack_require__(4);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _actions = __webpack_require__(5);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	//import Vue from 'Vue';
-	//import Vuex from 'Vuex';
-	//Vue.use(Vuex);
+	_Vue2.default.use(_Vuex2.default);
 	
-	var app = new Vue({
+	//import {increment, decrement} from './actions';
+	
+	var app = new _Vue2.default({
 		el: '#app',
 		store: _store2.default,
 		vuex: {
 			getters: {
+				//count: state => state.count
 				count: function count(state) {
 					return state.count;
 				}
 			},
 			actions: {
-				increment: _actions.increment,
-				decrement: _actions.decrement
+				increment: function increment(_ref) {
+					var dispatch = _ref.dispatch;
+	
+					dispatch("INCREMENT");
+				},
+				decrement: function decrement(_ref2) {
+					var dispatch = _ref2.dispatch;
+	
+					dispatch("DECREMENT");
+				}
 			}
 		}
 	});
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _vue = __webpack_require__(2);
-	
-	var _vue2 = _interopRequireDefault(_vue);
-	
-	var _vuex = __webpack_require__(4);
-	
-	var _vuex2 = _interopRequireDefault(_vuex);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	_vue2.default.use(_vuex2.default);
-	
-	var state = {
-		count: 0
-	};
-	
-	var mutations = {
-		INCREMENT: function INCREMENT(state) {
-			state.count++;
-		},
-		DECREMENT: function DECREMENT(state) {
-			state.count--;
-		}
-	};
-	
-	exports.default = new _vuex2.default.Store({
-		state: state,
-		mutations: mutations
-	});
-
-/***/ },
-/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {/*!
@@ -10192,10 +10167,10 @@
 	}, 0);
 	
 	module.exports = Vue;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(2)))
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -10381,7 +10356,7 @@
 
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -11048,22 +11023,44 @@
 	}));
 
 /***/ },
-/* 5 */
-/***/ function(module, exports) {
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
-	var increment = exports.increment = function increment(_ref) {
-	  var dispatch = _ref.dispatch;
-	  return dispatch('INCREMENT');
+	
+	var _vue = __webpack_require__(1);
+	
+	var _vue2 = _interopRequireDefault(_vue);
+	
+	var _vuex = __webpack_require__(3);
+	
+	var _vuex2 = _interopRequireDefault(_vuex);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	_vue2.default.use(_vuex2.default);
+	
+	var state = {
+		count: 0
 	};
-	var decrement = exports.decrement = function decrement(_ref2) {
-	  var dispatch = _ref2.dispatch;
-	  return dispatch('DECREMENT');
+	
+	var mutations = {
+		INCREMENT: function INCREMENT(state) {
+			state.count++;
+		},
+		DECREMENT: function DECREMENT(state) {
+			state.count--;
+		}
 	};
+	
+	exports.default = new _vuex2.default.Store({
+		state: state,
+		mutations: mutations
+	});
 
 /***/ }
 /******/ ]);

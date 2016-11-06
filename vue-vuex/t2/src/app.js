@@ -1,20 +1,27 @@
-//import Vue from 'Vue';
-//import Vuex from 'Vuex';
-//Vue.use(Vuex);
+import Vue from 'Vue';
+import Vuex from 'Vuex';
+Vue.use(Vuex);
 
 import store from './store';
-import {increment, decrement} from './actions';
+//import {increment, decrement} from './actions';
 
 const app = new Vue({
 	el: '#app',
 	store,
 	vuex: {
 		getters: {
-			count: state => state.count
+			//count: state => state.count
+			count: function(state){
+				return state.count;
+			}
 		},
 		actions: {
-			increment,
-			decrement
+			increment: function({dispatch}){
+				dispatch("INCREMENT");
+			},
+			decrement: function({dispatch}){
+				dispatch("DECREMENT");
+			}
 		}
 	},
 })

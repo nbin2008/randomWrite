@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://www.hui12.com/lib/vue2.js"></script>
+</head>
+<body>
+	<div id="app">
+	  {{ message }}
+	  <div v-html="testHtml">span</div>
+	</div>
+</body>
+<script>
+	var app = new Vue({
+	  el: '#app',
+	  data: {
+	    message: 'Hello Vue!',
+	    testHtml: '<span>111</span>'
+	  }
+	})
+</script>
+</html>

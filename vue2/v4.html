@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue2.js"></script>
+</head>
+<body>
+	<div id="app">
+		<template v-if="ok">
+		  <h1>Title</h1>
+		  <p>Paragraph 1</p>
+		  <p>Paragraph 2</p>
+		</template>
+		<div v-if="Math.random() > 0.5">
+		  Sorry
+		</div>
+		<div v-else>
+		  Not sorry
+		</div>
+	</div>
+</body>
+<script>
+	let vm = new Vue({
+		el: '#app',
+		data: {
+			ok: true
+		}
+	})
+</script>
+</html>

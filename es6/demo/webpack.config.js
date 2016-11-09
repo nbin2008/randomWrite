@@ -17,7 +17,6 @@ module.exports = {
     ]
   },
   babel: {
-    presets: ['es2015'],
-    plugins: ['transform-runtime']
+    presets: ['es2015','es2016','es2017'],
   }
 }

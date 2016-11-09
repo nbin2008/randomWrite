@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-.idea/
-./**/node_modules/
-=======
 .idea
 node_modules
-npm-debug.log
->>>>>>> 60eec232ee9e41555f45fe6107e53375d407dd9f
+*.js.map
+

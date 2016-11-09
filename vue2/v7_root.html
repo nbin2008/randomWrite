@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue2.js"></script>
+</head>
+<body>
+	<div id="app">
+		<temp></temp>
+
+		<p>{{ msg }}</p>
+		<input type="text" v-model.number="msg">
+	</div>
+</body>
+<script>
+	Vue.component('temp', {
+		template: '<span @click="click">点击</span>',
+		methods: {
+			click: function(){
+				console.log(this.$root);
+				console.log(this.$parent);
+			}
+		}
+	})
+
+	new Vue({
+		el: '#app',
+		data: {
+			msg: '1111',
+			msg2: '222'
+		}
+	})
+</script>
+</html>

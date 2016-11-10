@@ -1,0 +1,20 @@
+{
+  "name": "imgotest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-latest": "^6.16.0",
+    "vue": "^2.0.5",
+    "vuex": "^1.0.0",
+    "webpack": "^1.13.3"
+  }
+}

@@ -3,13 +3,15 @@
 	<div id="sidebar">
 		<ul>
 			<li v-for="(v,k) in list">
-				<a :href="v.href">{{ v.text }}</a>
+				<a :href="v.href" @click="update_href(v.text)">{{ v.text }}</a>
 			</li>
 		</ul>
 	</div>
 </template>
 
 <script>
+	import {update_href} from  "../vuex/actions.js";
+
 	export default {
 		name: 'sidebar',
 		data(){
@@ -24,6 +26,11 @@
 						text: `跳转链接2`,
 					}
 				]
+			}
+		},
+		vuex: {
+			actions: {
+				update_href,
 			}
 		}
 	}

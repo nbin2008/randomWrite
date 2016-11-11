@@ -1,20 +1,21 @@
 <template>
 	<div id="app">
 		<div class="header">
-			<header id="header">{{ headText }}</header>
+			<header>{{ headText }}</header>
 		</div>
 		<div class="body">
 			<sidebar></sidebar>
-			<!-- <content></content> -->
+			<content></content>
 		</div>
 		<div class="footer">
-			<footer id="footer">{{ footText }}</footer>
+			<footer>{{ footText }}</footer>
 		</div>
 	</div>
 </template>
 
 <script>
-	import Sidebar from './Sidebar.vue'
+	import Sidebar from "./Sidebar.vue"
+	import Content from "./Content.vue"
 
 	export default {
 		name: 'app',
@@ -25,7 +26,8 @@
 			}
 		},
 		components: {
-			Sidebar
+			Sidebar,
+			Content,
 		}
 	}
 </script>

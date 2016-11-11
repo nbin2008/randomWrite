@@ -21,7 +21,15 @@ module.exports = {
 					presets: ['latest']
 				}
 			},
+			{
+				test: /\.vue$/,
+				loader: 'vue',
+			}
 		]
+	},
+
+	babel: {
+		presets: ['latest']
 	}
 }
 

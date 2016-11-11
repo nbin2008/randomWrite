@@ -1,5 +1,6 @@
 
 import Vue from "vue";
+import App from "../components/App.vue"
 //import Vuex from "vuex";
 //import babel_polyfill from "babel-polyfill";
 
@@ -7,9 +8,6 @@ import Vue from "vue";
 
 let vm = new Vue({
 	el: '#app',
-	//render : h=>h(),
-	data: {
-		tro: "测试测试"
-	}
+	render : h=>h(App),
 })
 

@@ -5,7 +5,7 @@
 		</div>
 		<div class="body">
 			<sidebar></sidebar>
-			<content></content>
+			<cc></cc>
 		</div>
 		<div class="footer">
 			<footer>{{ footText }}</footer>
@@ -15,7 +15,7 @@
 
 <script>
 	import Sidebar from "./Sidebar.vue"
-	import Content from "./Content.vue"
+	import Cc from "./Cc.vue"
 
 	export default {
 		name: 'app',
@@ -27,7 +27,7 @@
 		},
 		components: {
 			Sidebar,
-			Content,
+			Cc,
 		}
 	}
 </script>

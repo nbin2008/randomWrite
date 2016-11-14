@@ -11,18 +11,18 @@
 
 <script>
 	import {update_href} from  "../vuex/actions.js";
-
+	console.log( update_href );
 	export default {
 		name: 'sidebar',
 		data(){
 			return {
 				list: [
 					{
-						href: `javascript:alert("跳转链接1")`,
+						href: `javascript:;`,
 						text: `跳转链接1`,
 					},
 					{
-						href: `javascript:alert("跳转链接2")`,
+						href: `javascript:;`,
 						text: `跳转链接2`,
 					}
 				]

@@ -62,9 +62,6 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	//Vue.use(Vuex);
-	
-	//import Vuex from "Vuex";
 	var app = new _Vue2.default({
 		el: '#app',
 		store: _store2.default,
@@ -13966,7 +13963,7 @@
 	_Vue2.default.use(_Vuex2.default);
 	
 	var state = {
-		str: ''
+		str: '...'
 	};
 	
 	var mutations = {
@@ -14544,7 +14541,7 @@
 	__vue_exports__ = __webpack_require__(306)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(313)
+	var __vue_template__ = __webpack_require__(310)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -14556,7 +14553,7 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "E:\\randomWrite\\vue-vuex2\\test1\\static\\components\\App.vue"
+	__vue_options__.__file = "E:\\randomWrite\\vue-vuex2\\test2\\static\\components\\App.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 	
@@ -14567,9 +14564,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-efcf5ee0", __vue_options__)
+	    hotAPI.createRecord("data-v-7d2d3d5e", __vue_options__)
 	  } else {
-	    hotAPI.reload("data-v-efcf5ee0", __vue_options__)
+	    hotAPI.reload("data-v-7d2d3d5e", __vue_options__)
 	  }
 	})()}
 	if (__vue_options__.functional) {console.error("[vue-loader] App.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -14593,8 +14590,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/.0.25.0@css-loader/index.js?sourceMap!./../../node_modules/.9.9.5@vue-loader/lib/style-rewriter.js?id=data-v-efcf5ee0!./../../node_modules/.9.9.5@vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
-				var newContent = require("!!./../../node_modules/.0.25.0@css-loader/index.js?sourceMap!./../../node_modules/.9.9.5@vue-loader/lib/style-rewriter.js?id=data-v-efcf5ee0!./../../node_modules/.9.9.5@vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
+			module.hot.accept("!!./../../node_modules/.0.25.0@css-loader/index.js?sourceMap!./../../node_modules/.9.9.5@vue-loader/lib/style-rewriter.js?id=data-v-7d2d3d5e!./../../node_modules/.9.9.5@vue-loader/lib/selector.js?type=styles&index=0!./App.vue", function() {
+				var newContent = require("!!./../../node_modules/.0.25.0@css-loader/index.js?sourceMap!./../../node_modules/.9.9.5@vue-loader/lib/style-rewriter.js?id=data-v-7d2d3d5e!./../../node_modules/.9.9.5@vue-loader/lib/selector.js?type=styles&index=0!./App.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -14612,7 +14609,7 @@
 	
 	
 	// module
-	exports.push([module.id, "\n.color1{\r\n\tborder: 1px solid red;\n}\n.color2{\r\n\tborder: 1px solid blue;\n}\r\n", "", {"version":3,"sources":["/./static/components/App.vue?2432533b"],"names":[],"mappings":";AA8BA;CACA,sBAAA;CACA;AACA;CACA,uBAAA;CACA","file":"App.vue","sourcesContent":["<template>\r\n\t<div id=\"app\">\r\n\t\t<div class=\"color1\">\r\n\t\t\t<part-a></part-a>\r\n\t\t</div>\r\n\t\t<!-- <div class=\"color2\">\r\n\t\t\t<part-b></part-b>\r\n\t\t</div> -->\r\n\t\t<button @click=\"reset\">重置</button>\t\r\n\t</div>\r\n</template>\r\n\r\n<script>\r\n\timport PartA from \"./PartA.vue\";\r\n\timport PartB from \"./partB.vue\";\r\n\r\n\texport default {\r\n\t\tmethods: {\r\n\t\t\treset: function(){\r\n\t\t\t\t\r\n\t\t\t}\r\n\t\t},\r\n\t\tcomponents: {\r\n\t\t\tPartA,\r\n\t\t\t//PartB,\r\n\t\t},\r\n\t}\r\n</script>\r\n\r\n<style>\r\n.color1{\r\n\tborder: 1px solid red;\r\n}\r\n.color2{\r\n\tborder: 1px solid blue;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "\n.color1{\r\n\tborder: 1px solid red;\n}\n.color2{\r\n\tborder: 1px solid blue;\n}\r\n", "", {"version":3,"sources":["/./static/components/App.vue?f564ec80"],"names":[],"mappings":";AAyBA;CACA,sBAAA;CACA;AACA;CACA,uBAAA;CACA","file":"App.vue","sourcesContent":["<template>\r\n\t<div id=\"app\">\r\n\t\t<div class=\"color1\">\r\n\t\t\t<part-a></part-a>\r\n\t\t</div>\r\n\t\t<button @click=\"reset\">重置</button>\t\r\n\t</div>\r\n</template>\r\n\r\n<script>\r\n\timport PartA from \"./PartA.vue\";\r\n\r\n\texport default {\r\n\t\tmethods: {\r\n\t\t\treset: function(){\r\n\r\n\t\t\t}\r\n\t\t},\r\n\t\tcomponents: {\r\n\t\t\tPartA,\r\n\t\t},\r\n\t}\r\n</script>\r\n\r\n<style>\r\n.color1{\r\n\tborder: 1px solid red;\r\n}\r\n.color2{\r\n\tborder: 1px solid blue;\r\n}\r\n</style>"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -14909,24 +14906,7 @@
 	
 	var _PartA2 = _interopRequireDefault(_PartA);
 	
-	var _partB = __webpack_require__(310);
-	
-	var _partB2 = _interopRequireDefault(_partB);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
 	
 	exports.default = {
 		methods: {
@@ -14935,7 +14915,15 @@
 		components: {
 			PartA: _PartA2.default
 		}
-	};
+	}; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 
 /***/ },
 /* 307 */
@@ -14945,7 +14933,7 @@
 	var __vue_styles__ = {}
 	
 	/* script */
-	__vue_exports__ = __webpack_require__(308)
+	__vue_exports__ = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"!!babel-loader!vue-loader/lib/selector?type=script&index=0!./PartA.vue\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()))
 	
 	/* template */
 	var __vue_template__ = __webpack_require__(309)
@@ -14960,7 +14948,7 @@
 	if (typeof __vue_options__ === "function") {
 	  __vue_options__ = __vue_options__.options
 	}
-	__vue_options__.__file = "E:\\randomWrite\\vue-vuex2\\test1\\static\\components\\PartA.vue"
+	__vue_options__.__file = "E:\\randomWrite\\vue-vuex2\\test2\\static\\components\\PartA.vue"
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
 	
@@ -14971,9 +14959,9 @@
 	  if (!hotAPI.compatible) return
 	  module.hot.accept()
 	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-5b4c28dd", __vue_options__)
+	    hotAPI.createRecord("data-v-f6c7e544", __vue_options__)
 	  } else {
-	    hotAPI.reload("data-v-5b4c28dd", __vue_options__)
+	    hotAPI.reload("data-v-f6c7e544", __vue_options__)
 	  }
 	})()}
 	if (__vue_options__.functional) {console.error("[vue-loader] PartA.vue: functional components are not supported and should be defined in plain js files using render functions.")}
@@ -14982,50 +14970,7 @@
 
 
 /***/ },
-/* 308 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	
-	exports.default = {
-		data: function data() {
-			return {
-				inputStr: ''
-			};
-		},
-		methods: {
-			inputChange: function inputChange() {
-				this.$store.dispatch('update', { s: this.inputStr });
-			}
-		},
-		watch: {
-			inputStr: function inputStr() {
-				console.log(this.$store);
-				this.inputChange();
-			}
-		}
-	};
-
-/***/ },
+/* 308 */,
 /* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -15050,7 +14995,7 @@
 	        _vm.inputStr = $event.target.value
 	      }
 	    }
-	  }), " ", _vm._h('p', [_vm._m(1), " ", _vm._h('span', [_vm._s(_vm.$store.state.str)])]), " ", _vm._h('p', [_vm._m(2), " ", _vm._h('span', [_vm._s(_vm.$store.getters.str)])])])
+	  }), " ", _vm._h('p', [_vm._m(1), " ", _vm._h('span', [_vm._s(_vm.str)])]), " ", _vm._h('p', [_vm._m(2), " ", _vm._h('span', [_vm._s("$store.getters.str")])])])
 	},staticRenderFns: [function (){var _vm=this;
 	  return _vm._h('h2', ["这是组件a"])
 	},function (){var _vm=this;
@@ -15061,103 +15006,12 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-5b4c28dd", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-f6c7e544", module.exports)
 	  }
 	}
 
 /***/ },
 /* 310 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-	var __vue_styles__ = {}
-	
-	/* script */
-	__vue_exports__ = __webpack_require__(311)
-	
-	/* template */
-	var __vue_template__ = __webpack_require__(312)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	__vue_options__.__file = "E:\\randomWrite\\vue-vuex2\\test1\\static\\components\\partB.vue"
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	
-	/* hot reload */
-	if (false) {(function () {
-	  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  module.hot.accept()
-	  if (!module.hot.data) {
-	    hotAPI.createRecord("data-v-382fbf04", __vue_options__)
-	  } else {
-	    hotAPI.reload("data-v-382fbf04", __vue_options__)
-	  }
-	})()}
-	if (__vue_options__.functional) {console.error("[vue-loader] partB.vue: functional components are not supported and should be defined in plain js files using render functions.")}
-	
-	module.exports = __vue_exports__
-
-
-/***/ },
-/* 311 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	
-	
-	exports.default = {};
-
-/***/ },
-/* 312 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports={render:function (){var _vm=this;
-	  return _vm._h('div', [_vm._m(0), " ", _vm._h('p', [_vm._m(1), " ", _vm._h('span', [_vm._s(_vm.$store.state.b.str)])]), " ", _vm._h('p', [_vm._m(2), " ", _vm._h('span', [_vm._s(_vm.$store.state.b.getters.str)])])])
-	},staticRenderFns: [function (){var _vm=this;
-	  return _vm._h('h2', ["这是组件b"])
-	},function (){var _vm=this;
-	  return _vm._h('span', ["组件a数据："])
-	},function (){var _vm=this;
-	  return _vm._h('span', ["组件a数据*2："])
-	}]}
-	if (false) {
-	  module.hot.accept()
-	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-382fbf04", module.exports)
-	  }
-	}
-
-/***/ },
-/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;
@@ -15167,7 +15021,7 @@
 	    }
 	  }, [_vm._h('div', {
 	    staticClass: "color1"
-	  }, [_vm._h('part-a')]), " ", " ", _vm._h('button', {
+	  }, [_vm._h('part-a')]), " ", _vm._h('button', {
 	    on: {
 	      "click": _vm.reset
 	    }
@@ -15176,7 +15030,7 @@
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
-	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-efcf5ee0", module.exports)
+	     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-7d2d3d5e", module.exports)
 	  }
 	}
 

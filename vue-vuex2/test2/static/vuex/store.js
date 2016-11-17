@@ -21,7 +21,7 @@ const actions = {
 }
 
 const getters = {
-	str: state => {
+	str2: state => {
 		return state.str + state.str
 	}
 }

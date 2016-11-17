@@ -17,6 +17,6 @@ module.exports = {
     ]
   },
   babel: {
-    presets: ['es2015','es2016','es2017'],
+    presets: ['es2015','es2016','es2017','stage-2'],
   }
 }

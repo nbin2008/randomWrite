@@ -46,11 +46,20 @@
 
 	"use strict";
 	
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+	
 	__webpack_require__(1);
 	var test = "es6 is ok";
 	var test2 = [1, 2].includes(1);
 	console.log(test);
 	console.log(test2);
+	
+	var _x$y$a$b = { x: 1, y: 2, a: 3, b: 4 },
+	    x = _x$y$a$b.x,
+	    y = _x$y$a$b.y,
+	    z = _objectWithoutProperties(_x$y$a$b, ["x", "y"]);
+	
+	console.log(z);
 
 /***/ },
 /* 1 */

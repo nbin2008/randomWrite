@@ -8,16 +8,13 @@
 		</p>
 		<p>
 			<span>组件a数据*2：</span>
-			<span>{{ "$store.getters.str" }}</span>
+			<span>{{ str2 }}</span>
 		</p>
 	</div>
 </template>
 
 <script>
-	import {mapState,} from "Vuex";
-
-	let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
-	console.log(z);
+	import {mapState, mapGetters, mapActions} from "Vuex";
 
 	export default {
 		data: function(){
@@ -25,14 +22,23 @@
 				inputStr: '',
 			}
 		},
-		/*computed: mapState({
-			str: state => state.str
-		})*/
-		/*computed: {
-			localComputed () {},
+		computed: {
 			...mapState({
 				str: state => state.str
+			}),
+			...mapGetters({
+				str2: 'str2'
+			}),
+		},
+		methods: {
+			...mapActions({
+				update: 'update'
 			})
-		}*/
+		},
+		watch: {
+			inputStr: function(){
+				this.update({s: this.inputStr});
+			}
+		}
 	}
 </script>

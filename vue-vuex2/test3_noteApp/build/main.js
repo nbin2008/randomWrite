@@ -13952,6 +13952,8 @@
 		value: true
 	});
 	
+	var _mutations, _actions;
+	
 	var _Vue = __webpack_require__(298);
 	
 	var _Vue2 = _interopRequireDefault(_Vue);
@@ -13962,30 +13964,77 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	_Vue2.default.use(_Vuex2.default);
 	
+	var addNote = "addNote";
+	var editNote = "editNote";
+	var deleteNote = "deleteNote";
+	var toggleFavorite = "toggleFavorite";
+	var setActiveNote = "setActiveNote";
+	
 	var state = {
-		str: '...'
+		notes: [],
+		activeNote: {}
 	};
 	
-	var mutations = {
-		update: function update(state, s) {
-			state.str = s;
-		}
-	};
+	var mutations = (_mutations = {}, _defineProperty(_mutations, addNote, function (state, isFavorite) {
+		console.log(isFavorite);
+		var newNote = {
+			text: 'New note',
+			favorite: isFavorite == void 0 ? false : isFavorite,
+			_rm: Math.random()
+		};
+		state.notes.push(newNote);
+		state.activeNote = newNote;
+	}), _defineProperty(_mutations, editNote, function (state, text) {
+		state.activeNote.text = text;
+	}), _defineProperty(_mutations, deleteNote, function (state) {
+		var rm = state.activeNote['_rm'];
+		var index = state.notes.findIndex(function (v, i) {
+			if (rm == v['_rm']) return true;
+			return false;
+		});
+		if (index >= 0) state.notes.splice(index, 1);
+		state.activeNote = state.notes[0] || {};
+	}), _defineProperty(_mutations, toggleFavorite, function (state) {
+		state.activeNote['favorite'] = !state.activeNote['favorite'];
+	}), _defineProperty(_mutations, setActiveNote, function (state, note) {
+		state.activeNote = note;
+	}), _mutations);
 	
-	var actions = {
-		update: function update(_ref, _ref2) {
-			var commit = _ref.commit;
-			var s = _ref2.s;
+	var actions = (_actions = {}, _defineProperty(_actions, addNote, function (_ref, _ref2) {
+		var commit = _ref.commit;
+		var _ref2$isFavorite = _ref2.isFavorite,
+		    isFavorite = _ref2$isFavorite === undefined ? false : _ref2$isFavorite;
 	
-			commit('update', s);
-		}
-	};
+		commit('addNote', isFavorite);
+	}), _defineProperty(_actions, editNote, function (_ref3, _ref4) {
+		var commit = _ref3.commit;
+		var text = _ref4.text;
+	
+		commit('editNote', text);
+	}), _defineProperty(_actions, deleteNote, function (_ref5) {
+		var commit = _ref5.commit;
+	
+		commit('deleteNote');
+	}), _defineProperty(_actions, toggleFavorite, function (_ref6) {
+		var commit = _ref6.commit;
+	
+		commit('toggleFavorite');
+	}), _defineProperty(_actions, setActiveNote, function (_ref7, _ref8) {
+		var commit = _ref7.commit;
+		var note = _ref8.note;
+	
+		commit('setActiveNote', note);
+	}), _actions);
 	
 	var getters = {
-		str2: function str2(state) {
-			return state.str + state.str;
+		favoriteNotes: function favoriteNotes(state) {
+			return state.notes.filter(function (v, i) {
+				return v['favorite'];
+			});
 		}
 	};
 	
@@ -14540,7 +14589,7 @@
 	__vue_exports__ = __webpack_require__(302)
 	
 	/* template */
-	var __vue_template__ = __webpack_require__(310)
+	var __vue_template__ = __webpack_require__(312)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -14591,7 +14640,7 @@
 	
 	var _NotesList2 = _interopRequireDefault(_NotesList);
 	
-	var _NotesEditor = __webpack_require__(308);
+	var _NotesEditor = __webpack_require__(309);
 	
 	var _NotesEditor2 = _interopRequireDefault(_NotesEditor);
 	
@@ -14658,14 +14707,15 @@
 
 /***/ },
 /* 304 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	//
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
 	//
 	//
 	//
@@ -14674,27 +14724,50 @@
 	//
 	//
 	
-	exports.default = {};
+	var _Vuex = __webpack_require__(300);
+	
+	exports.default = {
+		computed: _extends({}, (0, _Vuex.mapState)({
+			activeNote: function activeNote(state) {
+				return state.activeNote;
+			}
+		})),
+		methods: _extends({}, (0, _Vuex.mapActions)({
+			addNote: 'addNote',
+			toggleFavorite: 'toggleFavorite',
+			deleteNote: 'deleteNote'
+		}))
+	};
 
 /***/ },
 /* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;
-	  return _vm._m(0)
-	},staticRenderFns: [function (){var _vm=this;
 	  return _vm._h('div', {
 	    attrs: {
 	      "id": "toolbar"
 	    }
 	  }, [_vm._h('i', {
-	    staticClass: "glyphicon glyphicon-plus"
+	    staticClass: "glyphicon glyphicon-plus",
+	    on: {
+	      "click": _vm.addNote
+	    }
 	  }), " ", _vm._h('i', {
-	    staticClass: "glyphicon glyphicon-star"
+	    staticClass: "glyphicon glyphicon-star",
+	    class: {
+	      starred: _vm.activeNote['favorite']
+	    },
+	    on: {
+	      "click": _vm.toggleFavorite
+	    }
 	  }), " ", _vm._h('i', {
-	    staticClass: "glyphicon glyphicon-remove"
+	    staticClass: "glyphicon glyphicon-remove",
+	    on: {
+	      "click": _vm.deleteNote
+	    }
 	  })])
-	}]}
+	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
@@ -14709,8 +14782,11 @@
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 	
+	/* script */
+	__vue_exports__ = __webpack_require__(307)
+	
 	/* template */
-	var __vue_template__ = __webpack_require__(307)
+	var __vue_template__ = __webpack_require__(308)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -14747,9 +14823,94 @@
 /* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	
+	var _Vuex = __webpack_require__(300);
+	
+	exports.default = {
+		data: function data() {
+			return {
+				toggleAllNotes: true,
+				list: []
+			};
+		},
+	
+		computed: _extends({}, (0, _Vuex.mapState)({
+			notes: function notes(state) {
+				return state.notes;
+			},
+			activeNote: function activeNote(state) {
+				return state.activeNote;
+			}
+		}), (0, _Vuex.mapGetters)({
+			favoriteNotes: 'favoriteNotes'
+		})),
+		methods: _extends({}, (0, _Vuex.mapActions)({
+			setActiveNote: 'setActiveNote'
+		}), {
+			changeStatus: function changeStatus(s) {
+				if (s == 'isAll') {
+					this.$data.toggleAllNotes = true;
+				} else if (s == 'isFavorite') {
+					this.$data.toggleAllNotes = false;
+				}
+			},
+			changeList: function changeList() {
+				if (this.$data.toggleAllNotes) {
+					this.$data.list = this.notes;
+				} else {
+					this.$data.list = this.favoriteNotes;
+				}
+			}
+		}),
+		watch: {
+			notes: function notes() {
+				this.changeList();
+			},
+			toggleAllNotes: function toggleAllNotes() {
+				this.changeList();
+			}
+		},
+		mounted: function mounted() {
+			this.$nextTick(function () {
+				this.$data.list = this.notes;
+			});
+		}
+	};
+
+/***/ },
+/* 308 */
+/***/ function(module, exports, __webpack_require__) {
+
 	module.exports={render:function (){var _vm=this;
-	  return _vm._m(0)
-	},staticRenderFns: [function (){var _vm=this;
 	  return _vm._h('div', {
 	    attrs: {
 	      "id": "notes-list"
@@ -14758,7 +14919,7 @@
 	    attrs: {
 	      "id": "list-header"
 	    }
-	  }, [_vm._h('h2', ["Notes | coligo"]), " ", _vm._h('div', {
+	  }, [_vm._m(0), " ", _vm._h('div', {
 	    staticClass: "btn-group btn-group-justified",
 	    attrs: {
 	      "role": "group"
@@ -14769,9 +14930,17 @@
 	      "role": "group"
 	    }
 	  }, [_vm._h('button', {
-	    staticClass: "btn btn-default active",
+	    staticClass: "btn btn-default",
+	    class: {
+	      active: _vm.toggleAllNotes
+	    },
 	    attrs: {
 	      "type": "button"
+	    },
+	    on: {
+	      "click": function($event) {
+	        _vm.changeStatus('isAll')
+	      }
 	    }
 	  }, [" All Notes "])]), " ", _vm._h('div', {
 	    staticClass: "btn-group",
@@ -14780,8 +14949,16 @@
 	    }
 	  }, [_vm._h('button', {
 	    staticClass: "btn btn-default",
+	    class: {
+	      active: !_vm.toggleAllNotes
+	    },
 	    attrs: {
 	      "type": "button"
+	    },
+	    on: {
+	      "click": function($event) {
+	        _vm.changeStatus('isFavorite')
+	      }
 	    }
 	  }, [" Favorites "])])])]), " ", _vm._h('div', {
 	    attrs: {
@@ -14789,14 +14966,28 @@
 	    }
 	  }, [_vm._h('div', {
 	    staticClass: "list-group"
-	  }, [_vm._h('a', {
-	    staticClass: "list-group-item active",
-	    attrs: {
-	      "href": "#"
-	    }
-	  }, [_vm._h('h4', {
-	    staticClass: "list-group-item-heading"
-	  }, [" 123 "])])])])])
+	  }, [_vm._l((_vm.list), function(v, k) {
+	    return _vm._h('a', {
+	      staticClass: "list-group-item",
+	      class: {
+	        active: v['_rm'] == _vm.activeNote['_rm']
+	      },
+	      attrs: {
+	        "href": "javascript:;"
+	      },
+	      on: {
+	        "click": function($event) {
+	          _vm.setActiveNote({
+	            note: v
+	          })
+	        }
+	      }
+	    }, [_vm._h('h4', {
+	      staticClass: "list-group-item-heading"
+	    }, [_vm._s(v['text'].length > 10 ? v['text'].substring(0, 10) + "..." : v['text'])])])
+	  })])])])
+	},staticRenderFns: [function (){var _vm=this;
+	  return _vm._h('h2', ["Notes | coligo"])
 	}]}
 	if (false) {
 	  module.hot.accept()
@@ -14806,14 +14997,17 @@
 	}
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_exports__, __vue_options__
 	var __vue_styles__ = {}
 	
+	/* script */
+	__vue_exports__ = __webpack_require__(310)
+	
 	/* template */
-	var __vue_template__ = __webpack_require__(309)
+	var __vue_template__ = __webpack_require__(311)
 	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
 	if (
 	  typeof __vue_exports__.default === "object" ||
@@ -14847,20 +15041,79 @@
 
 
 /***/ },
-/* 309 */
+/* 310 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
+	//
+	//
+	//
+	//
+	//
+	
+	var _Vuex = __webpack_require__(300);
+	
+	exports.default = {
+		data: function data() {
+			return {
+				textVal: ""
+			};
+		},
+	
+		computed: _extends({}, (0, _Vuex.mapState)({
+			activeNote: function activeNote(state) {
+				return state.activeNote;
+			}
+		})),
+		methods: _extends({}, (0, _Vuex.mapActions)({
+			editNote: 'editNote'
+		})),
+		watch: {
+			activeNote: function activeNote() {
+				this.$data.textVal = this.activeNote['text'];
+			}
+		}
+	};
+
+/***/ },
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;
-	  return _vm._m(0)
-	},staticRenderFns: [function (){var _vm=this;
 	  return _vm._h('div', {
 	    attrs: {
 	      "id": "note-editor"
 	    }
 	  }, [_vm._h('textarea', {
-	    staticClass: "form-control"
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.textVal),
+	      expression: "textVal"
+	    }],
+	    staticClass: "form-control",
+	    domProps: {
+	      "value": _vm._s(_vm.textVal)
+	    },
+	    on: {
+	      "change": function($event) {
+	        _vm.editNote({
+	          text: _vm.textVal
+	        })
+	      },
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.textVal = $event.target.value
+	      }
+	    }
 	  })])
-	}]}
+	},staticRenderFns: []}
 	if (false) {
 	  module.hot.accept()
 	  if (module.hot.data) {
@@ -14869,7 +15122,7 @@
 	}
 
 /***/ },
-/* 310 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports={render:function (){var _vm=this;

@@ -13968,6 +13968,7 @@
 	
 	_Vue2.default.use(_Vuex2.default);
 	
+	var changeListStatus = "changeListStatus";
 	var addNote = "addNote";
 	var editNote = "editNote";
 	var deleteNote = "deleteNote";
@@ -13975,15 +13976,17 @@
 	var setActiveNote = "setActiveNote";
 	
 	var state = {
+		isAllList: true,
 		notes: [],
 		activeNote: {}
 	};
 	
-	var mutations = (_mutations = {}, _defineProperty(_mutations, addNote, function (state, isFavorite) {
-		console.log(isFavorite);
+	var mutations = (_mutations = {}, _defineProperty(_mutations, changeListStatus, function (state, bool) {
+		state.isAllList = bool;
+	}), _defineProperty(_mutations, addNote, function (state) {
 		var newNote = {
 			text: 'New note',
-			favorite: isFavorite == void 0 ? false : isFavorite,
+			favorite: !state.isAllList,
 			_rm: Math.random()
 		};
 		state.notes.push(newNote);
@@ -14004,28 +14007,31 @@
 		state.activeNote = note;
 	}), _mutations);
 	
-	var actions = (_actions = {}, _defineProperty(_actions, addNote, function (_ref, _ref2) {
+	var actions = (_actions = {}, _defineProperty(_actions, changeListStatus, function (_ref, _ref2) {
 		var commit = _ref.commit;
-		var _ref2$isFavorite = _ref2.isFavorite,
-		    isFavorite = _ref2$isFavorite === undefined ? false : _ref2$isFavorite;
+		var bool = _ref2.bool;
 	
-		commit('addNote', isFavorite);
-	}), _defineProperty(_actions, editNote, function (_ref3, _ref4) {
+		commit('changeListStatus', bool);
+	}), _defineProperty(_actions, addNote, function (_ref3) {
 		var commit = _ref3.commit;
-		var text = _ref4.text;
+	
+		commit('addNote');
+	}), _defineProperty(_actions, editNote, function (_ref4, _ref5) {
+		var commit = _ref4.commit;
+		var text = _ref5.text;
 	
 		commit('editNote', text);
-	}), _defineProperty(_actions, deleteNote, function (_ref5) {
-		var commit = _ref5.commit;
-	
-		commit('deleteNote');
-	}), _defineProperty(_actions, toggleFavorite, function (_ref6) {
+	}), _defineProperty(_actions, deleteNote, function (_ref6) {
 		var commit = _ref6.commit;
 	
-		commit('toggleFavorite');
-	}), _defineProperty(_actions, setActiveNote, function (_ref7, _ref8) {
+		commit('deleteNote');
+	}), _defineProperty(_actions, toggleFavorite, function (_ref7) {
 		var commit = _ref7.commit;
-		var note = _ref8.note;
+	
+		commit('toggleFavorite');
+	}), _defineProperty(_actions, setActiveNote, function (_ref8, _ref9) {
+		var commit = _ref8.commit;
+		var note = _ref9.note;
 	
 		commit('setActiveNote', note);
 	}), _actions);
@@ -14858,12 +14864,14 @@
 	exports.default = {
 		data: function data() {
 			return {
-				toggleAllNotes: true,
 				list: []
 			};
 		},
 	
 		computed: _extends({}, (0, _Vuex.mapState)({
+			isAllList: function isAllList(state) {
+				return state.isAllList;
+			},
 			notes: function notes(state) {
 				return state.notes;
 			},
@@ -14874,17 +14882,18 @@
 			favoriteNotes: 'favoriteNotes'
 		})),
 		methods: _extends({}, (0, _Vuex.mapActions)({
-			setActiveNote: 'setActiveNote'
+			setActiveNote: 'setActiveNote',
+			changeListStatus: 'changeListStatus'
 		}), {
 			changeStatus: function changeStatus(s) {
 				if (s == 'isAll') {
-					this.$data.toggleAllNotes = true;
+					this.changeListStatus({ bool: true });
 				} else if (s == 'isFavorite') {
-					this.$data.toggleAllNotes = false;
+					this.changeListStatus({ bool: false });
 				}
 			},
 			changeList: function changeList() {
-				if (this.$data.toggleAllNotes) {
+				if (this.isAllList) {
 					this.$data.list = this.notes;
 				} else {
 					this.$data.list = this.favoriteNotes;
@@ -14895,7 +14904,7 @@
 			notes: function notes() {
 				this.changeList();
 			},
-			toggleAllNotes: function toggleAllNotes() {
+			isAllList: function isAllList() {
 				this.changeList();
 			}
 		},
@@ -14932,7 +14941,7 @@
 	  }, [_vm._h('button', {
 	    staticClass: "btn btn-default",
 	    class: {
-	      active: _vm.toggleAllNotes
+	      active: _vm.isAllList
 	    },
 	    attrs: {
 	      "type": "button"
@@ -14950,7 +14959,7 @@
 	  }, [_vm._h('button', {
 	    staticClass: "btn btn-default",
 	    class: {
-	      active: !_vm.toggleAllNotes
+	      active: !_vm.isAllList
 	    },
 	    attrs: {
 	      "type": "button"

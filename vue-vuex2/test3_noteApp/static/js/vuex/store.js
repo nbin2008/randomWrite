@@ -20,10 +20,10 @@ const mutations = {
 	[changeListStatus](state,bool){
 		state.isAllList = bool;
 	},
-	[addNote](state, isFavorite) {
+	[addNote](state) {
 		const newNote = {
 	    	text: 'New note',
-	      	favorite: isFavorite,
+	      	favorite: !state.isAllList,
 	      	_rm: Math.random(),
 	    }
 	    state.notes.push(newNote);
@@ -53,8 +53,8 @@ const actions = {
 	[changeListStatus]({commit},{bool}){
 		commit('changeListStatus', bool);
 	},
-	[addNote]({commit}, {isFavorite = false}) {
-		commit('addNote', isFavorite);
+	[addNote]({commit}) {
+		commit('addNote');
 	},
 	[editNote]({commit},{text}){
 		commit('editNote',text);

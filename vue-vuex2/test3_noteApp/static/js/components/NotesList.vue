@@ -43,12 +43,13 @@
 		methods: {
 			...mapActions({
 				setActiveNote: 'setActiveNote',
+				changeListStatus: 'changeListStatus',
 			}),
 			changeStatus(s){
 				if( s == 'isAll' ){
-					this.$data.toggleAllNotes = true;
+					this.changeListStatus({bool: true});
 				}else if( s == 'isFavorite' ){
-					this.$data.toggleAllNotes = false;
+					this.changeListStatus({bool: false});
 				}
 			},
 			changeList(){

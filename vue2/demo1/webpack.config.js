@@ -28,6 +28,7 @@ plugins.push(
 
 
 module.exports = {
+    devtool: 'source-map',
     entry: ['./src/main.js'], //编译入口文件
     output: {
         publicPath: config.publicPath, //服务器的路径

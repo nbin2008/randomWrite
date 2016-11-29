@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	let arr = [
+	    {
+	        "scenName": "日常消费",
+	        "scenId": 13,
+	        "list": [
+	            {
+	                "dictCode": 410000,
+	                "dictName": "超一线城市",
+	                "attrValue": "0.35"
+	            },
+	            {
+	                "dictCode": 410001,
+	                "dictName": "一线城市",
+	                "attrValue": "0.23"
+	            },
+	            {
+	                "dictCode": 410003,
+	                "dictName": "三线城市",
+	                "attrValue": "0.3"
+	            },
+	            {
+	                "dictCode": 410004,
+	                "dictName": "非县级城市及其他",
+	                "attrValue": "0.12"
+	            }
+	        ]
+	    },
+	    {
+	        "scenName": "用车消费",
+	        "scenId": 14,
+	        "list": [
+	            {
+	                "dictCode": 410001,
+	                "dictName": "一线城市",
+	                "attrValue": "0.4"
+	            },
+	            {
+	                "dictCode": 410003,
+	                "dictName": "三线城市",
+	                "attrValue": "0.6"
+	            }
+	        ]
+	    },
+	    {
+	        "scenName": "医疗健康",
+	        "scenId": 15,
+	        "list": [
+	            {
+	                "dictCode": 410003,
+	                "dictName": "三线城市",
+	                "attrValue": "1"
+	            }
+	        ]
+	    },
+	    {
+	        "scenName": "家居家饰",
+	        "scenId": 16,
+	        "list": [
+	            {
+	                "dictCode": 410000,
+	                "dictName": "超一线城市",
+	                "attrValue": "0.35"
+	            },
+	            {
+	                "dictCode": 410001,
+	                "dictName": "一线城市",
+	                "attrValue": "0.65"
+	            }
+	        ]
+	    }
+	];
+
+	function completion(arr){
+		let ref = [];
+		arr.forEach(function(v,i){
+			if( v['list'].length > ref.length ) ref = v['list'];
+		});
+		arr.forEach(function(v,i){
+			ref.forEach(function(v2,i2){
+				if( v['list'][i2] == void 0 || v2['dictName'] !== v['list'][i2]['dictName'] ){
+					let tmp = {
+						dictCode: '',
+						dictName: v2['dictName'],
+						attrValue: '',
+					};
+					v['list'].splice(i2,0,tmp);
+				}
+			});
+		});
+		return arr;
+	};
+
+	let re = completion(arr);
+	console.log(re);
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <span>这是父级页面</span>
+    <iframe src="https://nbin2008.github.io/" id="f"></iframe>
+</body>
+<script>
+    var f=document.getElementById("f");
+    f.onload=function(){
+        f.contentWindow.postMessage("SB","https://nbin2008.github.io/");
+    }
+</script>
+</html>

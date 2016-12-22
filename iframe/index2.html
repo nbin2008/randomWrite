@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <span>这是子集页面</span>
+</body>
+<script>
+window.onmessage=function(e){
+    e = e || event;
+    document.write("我是",e.data);
+};
+</script>
+</html>

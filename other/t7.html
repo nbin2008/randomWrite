@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function filter(data){
+    let re = [];
+    let tmp = {};
+    data.forEach(function(v,i){
+        if( tmp[v['appId']] == void 0 ){
+            tmp[v['appId']] = 'fefefe';
+            re.push(v);
+        }
+    });
+    return re;
+};
+let data = [
+    {appId:'12'},
+    {appId:'12'},
+    {appId:'123'},
+    {appId:'123'},
+]
+filter(data);
+
+</script>
+</body>
+</html>

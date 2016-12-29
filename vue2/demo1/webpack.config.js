@@ -28,12 +28,11 @@ plugins.push(
 
 
 module.exports = {
-    devtool: 'source-map',
     entry: ['./src/main.js'], //编译入口文件
     output: {
         publicPath: config.publicPath, //服务器的路径
         path: path.resolve(__dirname + config.publicPath), //编译到app目录
-        filename: '[name].js' //编译后的文件名
+        filename: '[name].js?[hash]' //编译后的文件名
     },
     module: {
         loaders: [
@@ -72,7 +71,8 @@ module.exports = {
     resolve: {
         extensions: ['', '.js', '.vue', '.jsx'], //后缀名自动补全
         alias: {
-            vue: 'vue/dist/vue.js' //webpack打包时，需要设置别名
+            vue: 'vue/dist/vue.js', //webpack打包时，需要设置别名
+            store: path.resolve('src/store/'), //常用工具方法
         }
     },
     vue: {

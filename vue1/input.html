@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--<script src="http://www.hui12.com/lib/vue1.js"></script>-->
+    <script src="http://cdn.bootcss.com/vue/1.0.13/vue.js"></script>
+</head>
+<body>
+    <div id="vm">
+        <input id="demo" type="text" v-model="txt">
+        <p>{{txt}}</p>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+		el: '#vm',
+		data: {
+			txt: '',
+		}
+	});
+
+    setTimeout(function(){
+        document.getElementById('demo').value = 'sssssss';
+    },1000);
+</script>
+</html>
